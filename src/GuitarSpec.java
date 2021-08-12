@@ -1,37 +1,30 @@
-public class GuitarSpec {
+import enums.Builder;
+import enums.Type;
+import enums.Wood;
 
-    private String model;
-    private Builder builder;
-    private Type type;
-    private Wood backWood;
-    private Wood topWood;
+public class GuitarSpec extends InstrumentSpec {
 
+    private int numString;
 
-    public GuitarSpec(Builder builder,String model, Type type, Wood backWood, Wood topWood) {
-        this.builder = builder;
-        this.type = type;
-        this.backWood = backWood;
-        this.topWood = topWood;
-        this.model=model;
+    public GuitarSpec(Builder builder, String model, Type type, Wood backWood, Wood topWood, int numString) {
+        super(builder, model, type, backWood, topWood);
+        this.numString = numString;
     }
 
-    public Builder getBuilder() {
-        return builder;
+    public int getNumString() {
+        return numString;
     }
 
-    public Type getType() {
-        return type;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public Wood getBackWood() {
-        return backWood;
-    }
-
-    public Wood getTopWood() {
-        return topWood;
+    @Override
+    public boolean matches(InstrumentSpec otherSpec) {
+        if (!super.matches(otherSpec)) {
+            return false;
+        }
+        if (!(otherSpec instanceof GuitarSpec))
+            return false;
+        GuitarSpec spec = (GuitarSpec) otherSpec;
+        if (numString != spec.numString)
+            return false;
+        return true;
     }
 }
