@@ -10,8 +10,8 @@ public abstract class InstrumentSpec {
     private Wood topWood;
 
     public InstrumentSpec(Builder builder,String model, Type type, Wood backWood, Wood topWood) {
-        this.model = model;
         this.builder = builder;
+        this.model = model;
         this.type = type;
         this.backWood = backWood;
         this.topWood = topWood;
